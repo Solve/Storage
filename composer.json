@@ -1,0 +1,22 @@
+{
+    "name": "solve/storage",
+    "type": "library",
+    "description": " - [ Storage ] Classes for store any data in containers",
+    "keywords": ["storage","session","array"],
+    "homepage": "http://github.com/Solve/Storage",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexandr Viniychuk",
+            "email": "alexandr.viniychuk@icloud.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "symfony/yaml": "2.3.x-dev"
+    },
+    "autoload": {
+        "psr-0": { "Solve\\Storage\\": "" }
+    },
+    "target-dir": "Solve/Storage"
+}
