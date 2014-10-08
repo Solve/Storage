@@ -51,6 +51,10 @@ abstract class BaseStorage implements \ArrayAccess, \IteratorAggregate, \Countab
         return $this;
     }
 
+    public function unsetDeepValue($deepKey) {
+        unsetDeepArrayValue($this->_data, $deepKey);
+    }
+
     public function extendDeepValue($extender, $key = null) {
         $extendHandler = null;
         if ($key) {
