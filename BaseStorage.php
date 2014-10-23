@@ -10,9 +10,9 @@
 namespace Solve\Storage;
 
 /**
- * @package Solve\EventDispatcher
+ * @package Solve\Storage
  *
- * Interface StrageInterface is used to be implemented for storage classes
+ * Interface StorageInterface is used to be implemented for storage classes
  *
  * @version 1.0
  * @author Alexandr Viniychuk <alexandr.viniychuk@icloud.com>
@@ -95,6 +95,11 @@ abstract class BaseStorage implements \ArrayAccess, \IteratorAggregate, \Countab
 
     public function get($key, $defaultValue = null) {
         return $this->offsetExists($key) ? $this->offsetGet($key) : $defaultValue;
+    }
+
+    public function set($key, $value) {
+        $this->offsetSet($key, $value);
+        return $this;
     }
 
     public function getKeys() {
