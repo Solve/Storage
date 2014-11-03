@@ -25,16 +25,16 @@ class YamlStorage extends ArrayStorage {
     /**
      * @var string file associated with current storage
      */
-    private $_filename;
+    private $_path;
 
-    public function __construct($filename, $data = array()) {
-        $this->_filename = $filename;
+    public function __construct($path, $data = array()) {
+        $this->_path = $path;
         $this->reload();
     }
 
     public function reload() {
-        if (is_file($this->_filename)) {
-            $source = file_get_contents($this->_filename);
+        if (is_file($this->_path)) {
+            $source = file_get_contents($this->_path);
             if (!empty($source)) {
                 $this->setData(Yaml::parse($source));
             } else {
@@ -43,8 +43,12 @@ class YamlStorage extends ArrayStorage {
         }
     }
 
+    public function getPath() {
+        return $this->_path;
+    }
+
     public function flush() {
-        file_put_contents($this->_filename, Yaml::dump($this->_data, 6, 2));
+        file_put_contents($this->_path, Yaml::dump($this->_data, 6, 2));
     }
 
 } 
