@@ -28,6 +28,8 @@ class ArrayStorageTest extends \PHPUnit_Framework_TestCase {
         $storage->key2 = 'value2';
         $this->assertEquals('value2', $storage->key2, '__get after __set');
         $this->assertEquals('value2', $storage->get('key2'), 'get after __set');
+        $this->assertEquals('value', $storage->getFirst(), 'first item getter');
+        $this->assertEquals('value2', $storage->getLast(), 'last item getter');
     }
 
 }

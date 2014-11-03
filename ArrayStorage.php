@@ -31,6 +31,16 @@ class ArrayStorage extends BaseStorage {
         $this->_data = $data;
     }
 
+    public function getFirst() {
+        $arrayKeys = array_keys($this->_data);
+        return empty($arrayKeys) ? null : $this->_data[$arrayKeys[0]];
+    }
+
+    public function getLast() {
+        $arrayKeys = array_keys($this->_data);
+        return empty($arrayKeys) ? null : $this->_data[$arrayKeys[count($arrayKeys) - 1]];
+    }
+
     public function getIterator() {
         return new \ArrayIterator($this->_data);
     }
