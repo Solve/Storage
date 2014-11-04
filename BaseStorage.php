@@ -46,7 +46,7 @@ abstract class BaseStorage implements \ArrayAccess, \IteratorAggregate, \Countab
      * @param string $deepKey
      * @return BaseStorage
      */
-    public function setDeepValue($deepKey, &$value) {
+    public function setDeepValue($deepKey, $value) {
         setDeepArrayValue($this->_data, $value, $deepKey);
         return $this;
     }
