@@ -25,10 +25,14 @@ class ArrayStorage extends BaseStorage {
 
     /**
      * Initialize and set the data
-     * @param array $data
+     * @param array|ArrayStorage $data
      */
     public function __construct($data = array()) {
-        $this->_data = $data;
+        if (is_object($data) && $data instanceof ArrayStorage) {
+            $this->_data = $data->getData();
+        } else {
+            $this->_data = $data;
+        }
     }
 
     public function getFirst() {
