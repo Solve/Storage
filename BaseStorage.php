@@ -93,6 +93,10 @@ abstract class BaseStorage implements \ArrayAccess, \IteratorAggregate, \Countab
         return $this->offsetExists($key);
     }
 
+    public function hasDeep($deepKey) {
+        return hasDeepArrayValue($this->_data, $deepKey);
+    }
+
     public function get($key, $defaultValue = null) {
         return $this->offsetExists($key) ? $this->offsetGet($key) : $defaultValue;
     }
@@ -113,6 +117,15 @@ abstract class BaseStorage implements \ArrayAccess, \IteratorAggregate, \Countab
 }
 
 if (!function_exists('getDeepArrayValue')) {
+    function hasDeepArrayValue($array, $deepKey) {
+        $deepKey = explode('/', $deepKey);
+        foreach($deepKey as $key) {
+            if (!isset($array[$key])) return false;
+            $array = $array[$key];
+        }
+        return true;
+    }
+
     function getDeepArrayValue($array, $what = null) {
         if ($what !== null) {
             $what = explode('/', $what);
